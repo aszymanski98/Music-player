@@ -1,6 +1,10 @@
 <template>
   <!-- Auth Modal -->
-  <div class="fixed z-10 inset-0 overflow-y-auto hidden" id="modal">
+  <div
+      class="fixed z-10 inset-0 overflow-y-auto"
+      id="modal"
+      :class="{ hidden: !authModalShow }"
+  >
     <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center
       sm:block sm:p-0">
       <div class="fixed inset-0 transition-opacity">
@@ -19,7 +23,11 @@
           <div class="flex justify-between items-center pb-4">
             <p class="text-2xl font-bold">Your Account</p>
             <!-- Modal Close Button -->
-            <div class="modal-close cursor-pointer z-50">
+            <div
+                class="modal-close cursor-pointer z-50"
+                @click.prevent="toggleAuthModal"
+                @keydown.prevent="toggleAuthModal"
+            >
               <i class="fas fa-times"></i>
             </div>
           </div>
@@ -27,20 +35,35 @@
           <!-- Tabs -->
           <ul class="flex flex-wrap mb-4">
             <li class="flex-auto text-center">
-              <a class="block rounded py-3 px-4 transition hover:text-white text-white
-                bg-blue-600" href="#">Login</a>
+              <a
+                  href="#"
+                  class="block rounded py-3 px-4 transition "
+                  @click.prevent="tab = 'login'"
+                  :class="{
+                    'hover:text-white text-white bg-blue-600': tab === 'login',
+                    'hover:text-blue-600': tab === 'register'
+                  }"
+              >Login</a>
             </li>
             <li class="flex-auto text-center">
-              <a class="block rounded py-3 px-4 transition"
-                 href="#">Register</a>
+              <a
+                  href="#"
+                  class="block rounded py-3 px-4 transition"
+                  @click.prevent="tab = 'register'"
+                  :class="{
+                    'hover:text-white text-white bg-blue-600': tab === 'register',
+                    'hover:text-blue-600': tab === 'login'
+                  }"
+              >Register</a>
             </li>
           </ul>
 
           <!-- Login Form -->
-          <form>
+          <form v-show="tab === 'login'">
             <!-- Email -->
             <div class="mb-3">
               <label class="inline-block mb-2" for="loginEmail">
+                Email
                 <input
                     type="email"
                     id="loginEmail"
@@ -48,19 +71,18 @@
                        transition duration-500 focus:outline-none focus:border-black rounded"
                     placeholder="Enter Email"
                 />
-                Email
               </label>
             </div>
             <!-- Password -->
             <div class="mb-3">
               <label class="inline-block mb-2" for="loginPassword">
+                Password
                 <input
                     type="password"
                     id="loginPassword"
                     class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300
                        transition duration-500 focus:outline-none focus:border-black rounded"
                     placeholder="Password"/>
-                Password
               </label>
             </div>
             <button type="submit"
@@ -70,10 +92,11 @@
             </button>
           </form>
           <!-- Registration Form -->
-          <form>
+          <form v-show="tab === 'register'">
             <!-- Name -->
             <div class="mb-3">
               <label class="inline-block mb-2" for="name">
+                Name
                 <input
                     type="text"
                     id="name"
@@ -81,12 +104,12 @@
                        transition duration-500 focus:outline-none focus:border-black rounded"
                     placeholder="Enter Name"
                 />
-                Name
               </label>
             </div>
             <!-- Email -->
             <div class="mb-3">
               <label class="inline-block mb-2" for="registerEmail">
+                Email
                 <input
                     type="email"
                     id="registerEmail"
@@ -94,48 +117,48 @@
                       duration-500 focus:outline-none focus:border-black rounded"
                     placeholder="Enter Email"
                 />
-                Email
               </label>
             </div>
             <!-- Age -->
             <div class="mb-3">
               <label class="inline-block mb-2" for="age">
+                Age
                 <input
                     type="number"
                     id="age"
                     class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
                   duration-500 focus:outline-none focus:border-black rounded"
                 />
-                Age
               </label>
             </div>
             <!-- Password -->
             <div class="mb-3">
               <label class="inline-block mb-2" for="registerPassword">
+                Password
                 <input
                     type="password"
                     id="registerPassword"
                     class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
                       duration-500 focus:outline-none focus:border-black rounded"
                     placeholder="Password"/>
-                Password
               </label>
             </div>
             <!-- Confirm Password -->
             <div class="mb-3">
               <label class="inline-block mb-2" for="confirmPassword">
+                Confirm Password
                 <input
                     type="password"
                     id="confirmPassword"
                     class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
                       duration-500 focus:outline-none focus:border-black rounded"
                     placeholder="Confirm Password"/>
-                Confirm Password
               </label>
             </div>
             <!-- Country -->
             <div class="mb-3">
               <label class="inline-block mb-2" for="country">
+                Country
                 <select
                     id="country"
                     class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
@@ -145,7 +168,6 @@
                   <option value="Mexico">Mexico</option>
                   <option value="Germany">Germany</option>
                 </select>
-                Country
               </label>
             </div>
             <!-- TOS -->
@@ -173,7 +195,20 @@
 </template>
 
 <script>
+import { mapMutations, mapState } from 'vuex';
+
 export default {
   name: 'Auth',
+  data() {
+    return {
+      tab: 'login',
+    };
+  },
+  computed: {
+    ...mapState(['authModalShow']),
+  },
+  methods: {
+    ...mapMutations(['toggleAuthModal']),
+  },
 };
 </script>
