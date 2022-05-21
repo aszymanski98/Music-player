@@ -4,8 +4,8 @@ import router from './router';
 import store from './store';
 
 // CSS
-import './assets/tailwind.css';
-import './assets/main.css';
+import '@/assets/tailwind.css';
+import '@/assets/main.css';
 
 const app = createApp(App);
 

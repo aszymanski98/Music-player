@@ -40,10 +40,10 @@
           <form>
             <!-- Email -->
             <div class="mb-3">
-              <label class="inline-block mb-2" for="email">
+              <label class="inline-block mb-2" for="loginEmail">
                 <input
                     type="email"
-                    id="email"
+                    id="loginEmail"
                     class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300
                        transition duration-500 focus:outline-none focus:border-black rounded"
                     placeholder="Enter Email"
@@ -53,10 +53,10 @@
             </div>
             <!-- Password -->
             <div class="mb-3">
-              <label class="inline-block mb-2" for="password">
+              <label class="inline-block mb-2" for="loginPassword">
                 <input
-                    id="password"
                     type="password"
+                    id="loginPassword"
                     class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300
                        transition duration-500 focus:outline-none focus:border-black rounded"
                     placeholder="Password"/>
@@ -75,8 +75,8 @@
             <div class="mb-3">
               <label class="inline-block mb-2" for="name">
                 <input
-                    id="name"
                     type="text"
+                    id="name"
                     class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300
                        transition duration-500 focus:outline-none focus:border-black rounded"
                     placeholder="Enter Name"
@@ -86,10 +86,10 @@
             </div>
             <!-- Email -->
             <div class="mb-3">
-              <label class="inline-block mb-2" for="email">
+              <label class="inline-block mb-2" for="registerEmail">
                 <input
                     type="email"
-                    id="email"
+                    id="registerEmail"
                     class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
                       duration-500 focus:outline-none focus:border-black rounded"
                     placeholder="Enter Email"
@@ -111,10 +111,10 @@
             </div>
             <!-- Password -->
             <div class="mb-3">
-              <label class="inline-block mb-2" for="password">
+              <label class="inline-block mb-2" for="registerPassword">
                 <input
                     type="password"
-                    id="password"
+                    id="registerPassword"
                     class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition
                       duration-500 focus:outline-none focus:border-black rounded"
                     placeholder="Password"/>
@@ -159,8 +159,9 @@
                 Accept terms of service
               </label>
             </div>
-            <button type="submit"
-                    class="block w-full bg-purple-600 text-white py-1.5 px-3 rounded transition
+            <button
+                type="submit"
+                class="block w-full bg-purple-600 text-white py-1.5 px-3 rounded transition
                 hover:bg-purple-700">
               Submit
             </button>
