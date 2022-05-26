@@ -22,5 +22,8 @@ export default {
     AppContent,
     AppPlayer,
   },
+  created() {
+    this.$store.dispatch('init_login');
+  },
 };
 </script>

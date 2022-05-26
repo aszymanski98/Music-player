@@ -379,6 +379,8 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
+
 export default {
   name: 'RegisterForm',
   data() {
@@ -402,17 +404,28 @@ export default {
     };
   },
   methods: {
-    register(values, { resetForm }) {
+    ...mapMutations(['toggleAuthModal']),
+    async register(values) {
       this.reg_in_progress = true;
       this.reg_show_alert = true;
       this.reg_alert_variant = 'bg-blue-500';
       this.reg_alert_message = 'Please wait! Your account is being created.';
 
+      try {
+        await this.$store.dispatch('register', values);
+      } catch (error) {
+        this.reg_in_progress = false;
+        this.reg_alert_variant = 'bg-red-500';
+        this.reg_alert_message = 'An unexpected error occurred. Please try again later.';
+        return;
+      }
+
       this.reg_alert_variant = 'bg-green-500';
       this.reg_alert_message = 'Success! Your account has been created.';
 
-      resetForm();
-      console.log(values);
+      setTimeout(() => {
+        this.toggleAuthModal();
+      }, 1000);
     },
   },
 };

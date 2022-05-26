@@ -42,10 +42,10 @@
 
     </div>
     <button
-      type="submit"
-      class="block w-full bg-purple-600 text-white py-1.5 px-3 rounded transition
+        type="submit"
+        class="block w-full bg-purple-600 text-white py-1.5 px-3 rounded transition
               hover:bg-purple-700"
-      :disabled="login_in_progress"
+        :disabled="login_in_progress"
     >
       Submit
     </button>
@@ -53,6 +53,8 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
+
 export default {
   name: 'LoginForm',
   data() {
@@ -68,17 +70,28 @@ export default {
     };
   },
   methods: {
-    login(values, { resetForm }) {
+    ...mapMutations(['toggleAuthModal']),
+    async login(values) {
       this.login_in_progress = true;
       this.login_show_alert = true;
       this.login_alert_variant = 'bg-blue-500';
       this.login_alert_message = 'Please wait! Credentials are being checked.';
 
+      try {
+        await this.$store.dispatch('login', values);
+      } catch (error) {
+        this.login_in_progress = false;
+        this.login_alert_variant = 'bg-red-500';
+        this.login_alert_message = 'Invalid credentials.';
+        return;
+      }
+
       this.login_alert_variant = 'bg-green-500';
       this.login_alert_message = 'Success! Your are logged in.';
 
-      resetForm();
-      console.log(values);
+      setTimeout(() => {
+        this.toggleAuthModal();
+      }, 1000);
     },
   },
 };
