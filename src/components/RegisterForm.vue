@@ -405,7 +405,7 @@ export default {
   },
   methods: {
     ...mapMutations(['toggleAuthModal']),
-    async register(values) {
+    async register(values, { resetForm }) {
       this.reg_in_progress = true;
       this.reg_show_alert = true;
       this.reg_alert_variant = 'bg-blue-500';
@@ -424,7 +424,13 @@ export default {
       this.reg_alert_message = 'Success! Your account has been created.';
 
       setTimeout(() => {
+        this.reg_alert_message = null;
+        this.reg_show_alert = false;
+        this.reg_alert_variant = null;
+        this.reg_in_progress = false;
+
         this.toggleAuthModal();
+        resetForm();
       }, 1000);
     },
   },

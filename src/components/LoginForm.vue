@@ -71,7 +71,7 @@ export default {
   },
   methods: {
     ...mapMutations(['toggleAuthModal']),
-    async login(values) {
+    async login(values, { resetForm }) {
       this.login_in_progress = true;
       this.login_show_alert = true;
       this.login_alert_variant = 'bg-blue-500';
@@ -90,7 +90,13 @@ export default {
       this.login_alert_message = 'Success! Your are logged in.';
 
       setTimeout(() => {
+        this.login_alert_message = null;
+        this.login_show_alert = false;
+        this.login_alert_variant = null;
+        this.login_in_progress = false;
+
         this.toggleAuthModal();
+        resetForm();
       }, 1000);
     },
   },
