@@ -25,6 +25,7 @@ module.exports = {
         allowChildren: false,
       },
     ],
+    'vuejs-accessibility/form-control-has-label': 'off',
   },
   overrides: [
     {
