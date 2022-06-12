@@ -20,7 +20,8 @@
           class="text-white text-center font-bold p-4 mb-4"
           v-if="show_alert"
           :class="alert_variant"
-      >{{ alert_message }}
+      >
+        {{ alert_message }}
       </div>
       <VeeForm
           :validation-schema="schema"
