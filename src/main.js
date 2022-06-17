@@ -1,5 +1,6 @@
 import { createApp } from 'vue';
 import { auth } from '@/includes/firebase';
+import ProgressBar from '@/includes/progress-bar';
 import App from './App.vue';
 import VeeValidatePlugin from './includes/validation';
 import Icon from './directives/icon';
@@ -10,6 +11,9 @@ import './registerServiceWorker';
 // CSS
 import '@/assets/tailwind.css';
 import '@/assets/main.css';
+import 'nprogress/nprogress.css';
+
+ProgressBar(router);
 
 let app;
 

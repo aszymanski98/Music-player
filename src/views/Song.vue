@@ -99,23 +99,29 @@ export default {
       sort: 'DESC',
     };
   },
-  async created() {
-    const docSnapshot = await songsCollection.doc(this.$route.params.id)
+  async beforeRouteEnter(to, from, next) {
+    const docSnapshot = await songsCollection.doc(to.params.id)
       .get();
 
-    if (!docSnapshot.exists) {
-      await this.$router.push({ name: 'home' });
-      return;
-    }
+    next(async (vm) => {
+      if (!docSnapshot.exists) {
+        await vm.$router.push({ name: 'home' });
+        return;
+      }
 
-    const { sort } = this.$route.query;
-    this.sort = sort === 'DESC' || sort === 'ASC' ? sort : 'DESC';
+      const { sort } = vm.$route.query;
+      // eslint-disable-next-line no-param-reassign
+      vm.sort = sort === 'DESC' || sort === 'ASC' ? sort : 'DESC';
 
-    this.song = docSnapshot.data();
-    await this.getComments();
+      // eslint-disable-next-line no-param-reassign
+      vm.song = docSnapshot.data();
+      await vm.getComments();
+    });
   },
   computed: {
-    ...mapState(['userLoggedIn']),
+    ...mapState({
+      userLoggedIn: (state) => state.auth.userLoggedIn,
+    }),
     sortedComments() {
       return this.comments.slice()
         .sort((a, b) => {

@@ -41,4 +41,8 @@ export default {
 .fade-leave-active {
   transition: all 0.25s linear;
 }
+
+#nprogress .bar {
+  background: white !important;
+}
 </style>
