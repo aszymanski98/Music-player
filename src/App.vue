@@ -1,9 +1,11 @@
 <template>
   <AppHeader/>
 
-  <router-view v-slot="{ Component }">
+  <router-view v-slot="{ Component, route }">
     <transition name="fade" mode="out-in">
-      <component :is="Component"></component>
+      <div :key="route.name">
+        <component :is="Component"></component>
+      </div>
     </transition>
   </router-view>
 
@@ -30,16 +32,13 @@ export default {
 </script>
 
 <style>
-.fade-enter-from {
-  opacity: 0;
-}
-
-.fade-enter-active {
-  transition: all 0.25s linear;
-}
-
+.fade-enter-from,
 .fade-leave-to {
-  transition: all 0.25s linear;
   opacity: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.25s linear;
 }
 </style>

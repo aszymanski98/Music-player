@@ -5,6 +5,7 @@ import VeeValidatePlugin from './includes/validation';
 import Icon from './directives/icon';
 import router from './router';
 import store from './store';
+import './registerServiceWorker';
 
 // CSS
 import '@/assets/tailwind.css';

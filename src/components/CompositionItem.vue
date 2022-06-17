@@ -31,7 +31,7 @@
         <div class="mb-3 mt-3">
           <label class="w-1/2 block mb-2" for="title">
             Song Title
-            <VeeField type="text" id="title" name="modified_name"
+            <VeeField type="text" name="modified_name"
                       class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300
                         transition duration-500 focus:outline-none focus:border-black rounded"
                       placeholder="Enter Song Title" @input="updateUnsavedFlag(true)" />
@@ -41,7 +41,7 @@
         <div class="mb-3">
           <label class="w-1/2 block mb-2" for="genre">
             Genre
-            <VeeField type="text" id="genre" name="genre"
+            <VeeField type="text" name="genre"
                       class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300
                         transition duration-500 focus:outline-none focus:border-black rounded"
                       placeholder="Enter Genre" @input="updateUnsavedFlag(true)" />
