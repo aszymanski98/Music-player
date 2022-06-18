@@ -73,7 +73,7 @@ export default {
       const bottomOfWindow = Math.round(scrollTop) + innerHeight === offsetHeight;
 
       if (bottomOfWindow) {
-        console.log('dupa');
+        this.getSongs();
       }
     },
     async getSongs() {
