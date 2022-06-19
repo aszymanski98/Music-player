@@ -10,7 +10,7 @@
       </router-link>
     </div>
 
-    <div class="text-gray-600 text-lg">
+    <div class="text-gray-600 text-lg whitespace-nowrap">
       <router-link
         custom
         :to="{ name: 'song', params: { id: song.docID }, hash: '#comments' }"

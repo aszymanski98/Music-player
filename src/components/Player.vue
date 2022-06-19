@@ -1,9 +1,10 @@
 <template>
   <!-- Player -->
-  <div class="fixed bottom-0 left-0 bg-white p-5 pb-4 text-left align-top w-full h-16">
-    <div class="relative">
+  <div class="fixed bottom-0 left-0 bg-white text-left align-top w-full h-20">
+    <div class="relative h-full flex items-center justify-evenly">
       <!-- Play/Pause Button -->
-      <div class="float-left w-7 h-7 leading-3">
+      <div class="float-left leading-3 flex justify-center px-2"
+           :class="{'mt-8': currentSong.modified_name}">
         <button type="button" @click.prevent="toggleAudio" id="player-play-button">
           <i class="fa text-gray-500 text-xl"
             :class="{ 'fa-play': !playing, 'fa-pause': playing }"
@@ -11,25 +12,33 @@
         </button>
       </div>
       <!-- Current Position -->
-      <div class="float-left w-7 h-7 leading-3 text-gray-400 mt-0 text-lg w-14 ml-5 mt-1">
+      <div
+        class="float-left flex justify-center items-center w-7 h-7 leading-3 text-gray-400
+          text-lg w-14 mt-1 px-2"
+        :class="{'mt-8': currentSong.modified_name}"
+      >
         <span class="player-currenttime">{{ seek }}</span>
       </div>
+      <!-- Song Title -->
+      <div
+        class="absolute top-0 w-full text-sm lg:text-base
+            text-center player-song-info h-2/3 flex items-center justify-center"
+        v-if="currentSong.modified_name"
+      >
+        <span class="song-title">{{ currentSong.modified_name }}</span>
+      </div>
+
       <!-- Scrub -->
-      <div class="float-left w-7 h-7 leading-3 ml-7 mt-2 player-scrub">
-        <div
-          class="absolute left-0 right-0 text-lg text-center mx-auto player-song-info"
-          v-if="currentSong.modified_name"
-        >
-          <span class="song-title">{{ currentSong.modified_name }}</span>
-          <span class="song-artist"> (uploaded by {{ currentSong.display_name }})</span>
-        </div>
+      <div class="float-left player-scrub px-2" :class="{'mt-8': currentSong.modified_name}">
         <!-- Scrub Container  -->
         <span
-          class="block w-full h-2 rounded m-1 mt-2 bg-gray-200 relative cursor-pointer"
+          class="block w-full h-2 rounded m-1 bg-gray-200 relative cursor-pointer"
           @click.prevent="updateSeek"
         >
           <!-- Player Ball -->
-          <span class="absolute top-neg-8 text-gray-800 text-lg" :style="{ left: playerProgress }">
+          <span class="absolute top-neg-10 -translate-x-2 text-gray-800 text-lg"
+                :style="{ left: playerProgress }"
+          >
             <i class="fas fa-circle"></i>
           </span>
           <!-- Player Progress Bar-->
@@ -38,7 +47,11 @@
         </span>
       </div>
       <!-- Duration -->
-      <div class="float-left w-7 h-7 leading-3 text-gray-400 mt-0 text-lg w-14 ml-8 mt-1">
+      <div
+        class="float-left flex justify-center items-center w-7 h-7 leading-3
+        text-gray-400 text-lg w-14 mt-1 px-2"
+        :class="{'mt-8': currentSong.modified_name}"
+      >
         <span class="player-duration">{{ duration }}</span>
       </div>
     </div>

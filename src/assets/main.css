@@ -17,12 +17,14 @@ a:hover {
     width: calc(100% - 250px);
 }
 
-.top-neg-8 {
-    top: -8px;
+@media all and (max-width: 1024px) {
+    .player-scrub, .player-song-info {
+        width: 100%;
+    }
 }
 
-.player-song-info {
-    margin-top: -24px;
+.top-neg-10 {
+    top: -9.5px;
 }
 
 .card-header .fa.text-orange,
