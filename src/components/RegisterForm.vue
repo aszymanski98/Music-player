@@ -14,7 +14,7 @@
   >
     <!-- Name -->
     <div class="mb-3">
-      <label class="inline-block" for="name">
+      <label class="inline-block sm:w-3/4" for="name">
         Name
         <VeeField
             type="text"
@@ -22,29 +22,29 @@
             name="name"
             class="block w-full mt-1 py-1.5 px-3 text-gray-800 border border-gray-300
                        transition duration-500 focus:outline-none focus:border-black rounded"
-            placeholder="Enter Name"
+            placeholder="Enter name"
         />
         <ErrorMessage class="text-red-600 block mt-1" name="name"/>
       </label>
     </div>
     <!-- Email -->
     <div class="mb-3">
-      <label class="inline-block" for="registerEmail">
-        Email
+      <label class="inline-block sm:w-3/4" for="registerEmail">
+        Email address
         <VeeField
             type="email"
             id="registerEmail"
             name="email"
             class="block w-full mt-1 py-1.5 px-3 text-gray-800 border border-gray-300
                     transition duration-500 focus:outline-none focus:border-black rounded"
-            placeholder="Enter Email"
+            placeholder="Enter email address"
         />
         <ErrorMessage class="text-red-600 block mt-1" name="email"/>
       </label>
     </div>
     <!-- Age -->
     <div class="mb-3">
-      <label class="inline-block" for="age">
+      <label class="inline-block sm:w-3/4" for="age">
         Age
         <VeeField
             type="number"
@@ -53,13 +53,14 @@
             min="18"
             class="block w-full mt-1 py-1.5 px-3 text-gray-800 border border-gray-300
                     transition duration-500 focus:outline-none focus:border-black rounded"
+            placeholder="Enter age"
         />
         <ErrorMessage class="text-red-600 block mt-1" name="age"/>
       </label>
     </div>
     <!-- Password -->
     <div class="mb-3">
-      <label class="inline-block" for="registerPassword">
+      <label class="inline-block sm:w-3/4" for="registerPassword">
         Password
         <VeeField name="password" :bails="false" v-slot="{ field, errors }">
           <input
@@ -67,7 +68,7 @@
               id="registerPassword"
               class="block w-full mt-1 py-1.5 px-3 text-gray-800 border border-gray-300
                       transition duration-500 focus:outline-none focus:border-black rounded"
-              placeholder="Password"
+              placeholder="Enter password"
               v-bind="field"
           >
           <div class="text-red-600 block mt-1" v-for="error in errors" :key="error">
@@ -78,7 +79,7 @@
     </div>
     <!-- Confirm Password -->
     <div class="mb-3">
-      <label class="inline-block" for="confirmPassword">
+      <label class="inline-block sm:w-3/4" for="confirmPassword">
         Confirm Password
         <VeeField
             type="password"
@@ -86,14 +87,14 @@
             name="confirm_password"
             class="block w-full mt-1 py-1.5 px-3 text-gray-800 border border-gray-300
                     transition duration-500 focus:outline-none focus:border-black rounded"
-            placeholder="Confirm Password"
+            placeholder="Confirm password"
         />
         <ErrorMessage class="text-red-600 block mt-1" name="confirm_password"/>
       </label>
     </div>
     <!-- Country -->
     <div class="mb-3">
-      <label class="inline-block" for="country">
+      <label class="inline-block sm:w-3/4" for="country">
         Country
         <VeeField
             as="select"
@@ -354,7 +355,7 @@
       </label>
     </div>
     <!-- TOS -->
-    <div class="mb-3 pl-6">
+    <div class="mb-5 pl-6">
       <label class="inline-block mt-1" for="tos">
         <VeeField
             type="checkbox"

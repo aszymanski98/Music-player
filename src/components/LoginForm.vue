@@ -13,22 +13,22 @@
   >
     <!-- Email -->
     <div class="mb-3">
-      <label class="inline-block" for="loginEmail">
-        Email
+      <label class="inline-block sm:w-3/4" for="loginEmail">
+        Email address
         <VeeField
             type="email"
             id="loginEmail"
             name="email"
             class="block w-full mt-1 py-1.5 px-3 text-gray-800 border border-gray-300
                        transition duration-500 focus:outline-none focus:border-black rounded"
-            placeholder="Enter Email"
+            placeholder="Enter email address"
         />
         <ErrorMessage class="text-red-600 block mt-1" name="email"/>
       </label>
     </div>
     <!-- Password -->
-    <div class="mb-3">
-      <label class="inline-block" for="loginPassword">
+    <div class="mb-5">
+      <label class="inline-block sm:w-3/4" for="loginPassword">
         Password
         <VeeField
             type="password"
@@ -36,7 +36,7 @@
             name="password"
             class="block w-full mt-1 py-1.5 px-3 text-gray-800 border border-gray-300
                        transition duration-500 focus:outline-none focus:border-black rounded"
-            placeholder="Password"/>
+            placeholder="Enter password"/>
         <ErrorMessage class="text-red-600 block mt-1" name="password"/>
       </label>
 
