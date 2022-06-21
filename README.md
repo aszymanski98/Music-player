@@ -7,7 +7,7 @@ Music player allows user to listen to the music, upload, edit, and comment songs
 * [Setup](#setup)
 
 ## Demo
-Working demo of the project: https://aszymanski98.github.io/Music-player/
+Working demo of the project: https://music-player-pearl-rho.vercel.app/
 
 ## Features
 * Fully responsive page on computers and mobile devices styled with Tailwind CSS
